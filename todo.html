@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> todo </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+  </head>
+
+  <body>
+    <div class="pa4">
+      <div class="overflow-auto">
+        <table class="f5 w-100 mw5 center" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="fw6 bb b--black-20 tl pb3 pr1 bg-white">  </th>
+              <th class="fw6 b--black-20 tl pb3 pr3 bb bg-white">To Do</th>
+            </tr>
+          </thead>
+          <tbody class="lh-copy">
+            <tr>
+              <td class="v-top pv2 pr3 bb b--black-20">
+              <!--originally: bg-animate hover-bg-green hover-white-->
+                <svg class="checkbox green" data-icon="check" viewBox="0 0 32 34"> <!-- checkmark icon is vector -->
+                  <title>checkbox icon</title>
+                  <path d="M12,25.23,3.23,16.35l3.09-3.09L12,18.89,21.49,7.14l3.62,3.12L12,25.23Z"></path>
+                </svg>
+              </td>
+              <td class="pv2 pr3 bb b--black-20">pokemon go to the polls</td>
+            </tr>
+            <tr>
+              <td class="pv2 pr3 bb b--black-20">
+              </td>
+              <td class="pv2 pr3 bb b--black-20">add todo here</td>  <!-- change to a textbox, to add todo (additional table row) -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+
+  <style>
+  .checkbox{
+    align-items: center;
+    fill:currentcolor; <!-- variable that toggles between light gray and green-->
+    width: 1.5rem;
+    height: 1.5rem;
+    padding:0.25rem;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-flex;
+    text-decoration:none; <!-- variable that toggles between none and strikethrough-->
+    }
+  </style>
+</html>

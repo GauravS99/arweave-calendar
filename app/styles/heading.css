@@ -1,0 +1,92 @@
+
+.heading{ /*holds heading*/
+  composes: flexBox from global;
+  height: 10%;
+  min-height: 4em;
+}
+
+.title{
+  font-family: Gasalt, Verdana;
+  font-weight: bold;
+  font-size: 7vh;
+  letter-spacing: 3px;
+  height: 100%;
+  text-shadow: 1px 1px white;
+}
+
+.settingsIcon{
+  cursor: pointer;
+  font-size: 2.5vh;
+  width: 1.5em;
+  float: right;
+  flex: 1;
+}
+
+
+/*Below is css for the settings box==================================*/
+
+.settingsContainer{
+  composes: appearer from global;
+  position: absolute;
+  height: 40%;
+  width: 60%;
+  left: 20%;
+  top: 20%;
+  background: white;
+  border: 1px solid black;
+  z-index: 50;
+  padding: 1vw;
+}
+
+
+
+.titleFont{
+  font-family: Economica, Verdana;
+  font-weight: normal;
+}
+
+.settingsTitle{
+composes: titleFont;
+font-size: 6vh;
+flex: 1;
+}
+
+.button{
+  composes: titleFont;
+  font-size: 3vh;
+}
+
+.settingsList{
+  margin-top: 3vh;  
+}
+
+.setting{
+  font-family: Verdana;
+  font-size: 3vh;
+  display: inline-block;
+}
+
+.button{
+  border: 1px solid grey;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+}
+
+.settingButton{
+  composes: titleFont;
+  composes: button;
+  display: inline-block;
+  font-size: 3vh;
+  margin-left: 0.5vw;
+  padding: 0.5vh;
+}
+
+.settingButton:hover{ background-color: #f1f1f1 }
+
+.settingsList > div{
+  margin-top: 2vh;
+
+}
+
+

@@ -1,0 +1,88 @@
+.fullHeight{
+	height: 100%;
+}
+
+.mainFont{
+font-family: Economica, Verdana;
+font-weight: normal;
+font-size: 3vh;
+padding-right: 0.2em;
+}
+
+.dayHeading{
+	composes: mainFont;
+	flex: 1;
+	text-align: center;
+}
+
+.monthHeading{
+	composes: dayHeading;
+	font-size: 5vh;
+}
+
+.heading{
+	composes: flexBox from global;
+	height: 10%;
+	border-bottom: 0.75px solid black;
+}
+
+.daysHeading{
+	composes: flexBox from global;
+	height: 5%;
+	padding-top: 2.5px;
+	padding-bottom: 3px;
+	border-bottom: 0.75px solid black;
+}
+
+.gridContainer{
+	height: 85%;
+}
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-auto-rows: 1fr;
+	height: 100%;
+}
+
+/*.gridRows4{
+	grid-template-rows: repeat(7, 1fr);
+}
+
+.gridRows5{
+	grid-template-rows: repeat(7, 1fr);
+}
+
+.gridRows6{
+	grid-template-rows: repeat(7, 1fr);
+}*/
+
+.emptyBox{
+	background-color: grey;
+	border: 0.75px solid black;
+	padding: 5px;
+	overflow: hidden;
+}
+
+.dayBox{
+	composes: emptyBox;
+	background-color: white;
+}
+
+.selectedBox{
+	border: 1.5px solid red;
+}
+
+.todayBox{
+	background-color: aqua;
+}
+
+.tally{
+font-family: Gesalt, Verdana;
+font-size: 2em;
+text-align: center;
+}
+
+.boxHeading{
+
+}

@@ -1,0 +1,284 @@
+.flexBox{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.fill{
+	height: 100%;
+	width: 100%;
+}
+
+.button{
+	border: 1px solid grey;
+	cursor: pointer;
+	user-select: none;
+	text-align: center;
+}
+
+.mainFont{
+font-family: Economica, Verdana;
+font-weight: normal;
+font-size: 3vh;
+padding-right: 0.2em;
+}
+
+.writingFont{
+	font-family: Verdana;
+	font-weight: normal;
+	font-size: 1em;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+}
+
+.todo{
+	composes: fill;
+	position: relative;
+	
+}
+
+.headingContainer{
+	composes: flexBox from global;;
+	height: 10%;
+	position: relative;
+	border-bottom: 1px solid black;
+	
+	padding-left: 0.2em
+
+}
+
+.headingDiv{
+	
+}
+
+.headingFilterDiv{
+	composes: headingDiv;
+}
+
+.heading{
+	composes: mainFont;
+    font-size: 5vh;
+}
+
+.dropdown{
+	display: inline-block;
+}
+
+.dropdownButton{
+	composes: heading;
+	composes: button;
+	font-size: 2.5vw;
+}
+
+.dropdownContent {
+    font-size: 2vw;
+    display: block;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: white;
+}
+
+/* Change color of dropdown links on hover */
+.dropdownButton:hover, .typeSelectorButton:hover, .dropdownContent div:hover {background-color: #f1f1f1}
+
+
+.list{
+	height: 87.5%;
+	overflow-y: auto;
+}
+
+.listBlurred{
+	composes: list;
+	composes: blurred from global;
+}
+
+.listContainer{
+	position: relative;
+	max-height: 80%;
+	height: 80%;
+	
+}
+
+.inputContainer{
+  composes: flexBox from global;;
+  height: 12.5%;
+  
+  border-top: 1px solid black;
+}
+
+.textInputItem{
+	height: 100%;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em; 
+	
+	flex: 1;
+	flex-shrink: 2;
+}
+
+.textInput{
+ 	composes: writingFont;
+ 	composes: fill;
+ 	font-size: 90%;
+ 	color: grey;
+	resize: none;
+	
+	border:0;
+}
+
+.textInput:focus{
+	color: black;
+}
+
+.dateSelectorInputContainer{
+	height: 50%;
+	composes: flexBox from global;;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	max-width: 100%;
+	
+}
+
+.prioritySelectorContainer{
+	composes: dateSelectorInputContainer;
+	border-top: 1px solid black;
+	display: flex;
+}
+
+.dateSelectorInput{
+composes: textInput;
+text-align: center;
+height: 95%;
+border:0;
+font-size: 2vh;
+flex: 1;
+}
+
+
+.inputSettingsContainer{
+	height: 100%;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 14vh;
+}
+
+.typeSelector{
+	composes: mainFont;
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-left: 1px solid grey; 
+	height: 100%; 
+	flex: 1;
+}
+
+.typeSelectorButton{
+	composes: button;
+	composes: typeSelector;
+}
+
+.priorityButton{
+	composes: typeSelectorButton;
+	flex: 1;
+	text-align: left;
+	border: none;
+}
+
+.listItemContainer{
+	composes: flexBox from global;;
+	padding: 0.3em;
+	width: 100%;
+	min-height: 50px;
+	
+
+}
+.checkBox{
+	color:#19a974;
+    align-items: center;
+	fill: currentcolor; 
+    width: 1.5rem;
+    height: 1.5rem;
+    padding:0.25rem;
+    
+    border-style: solid;
+    border-width: 1px;
+    /*text-decoration:none; <!-- variable that toggles between none and strikethrough-->*/
+}
+
+.checkBoxCompleted{
+	composes: checkBox;
+	color: white;
+	background-color: #19a974;
+}
+
+
+@keyframes fade{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.fadeIn{
+  animation-name: fade;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.colorBar{
+	flex-basis: 5px;
+	height: 7vh;
+	margin-right: 5px;
+}
+
+.itemText{
+	flex: 1;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+.itemTextCompleted{
+	composes: itemText;
+	text-decoration: line-through;
+}
+
+.itemTime{
+	font-weight:bold
+}
+
+.iconDiv{
+	height: 100%;
+	width: 4vh;
+	border-right: 1px solid black; 
+}
+
+.repeatIcon{
+	padding-top:34%;
+	cursor: pointer;
+	width: 100%;
+}
+
+.extraSettingsContainer{
+  position: absolute;
+  height: 30%;
+  width: 60%;
+  left: 20%;
+  top: 20%;
+  background: white;
+  border: 1px solid black;
+  z-index: 30;
+  padding: 1vw;
+
+  overflow-y: auto;
+
+  composes: appearer from global;
+}
+
+.numberSelector{
+	width: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+

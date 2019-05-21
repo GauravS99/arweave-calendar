@@ -1,0 +1,22 @@
+.flexColumnContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.flexRowContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.button{
+}
+
+.testing{
+    width: 5%;
+}
+
+

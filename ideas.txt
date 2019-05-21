@@ -1,0 +1,2 @@
+1. Combine calandar and todo list functionality by having each date in the calander have its own to do list
+2. Hit up chilled cow and see if he wants to collab
