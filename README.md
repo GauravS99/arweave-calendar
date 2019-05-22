@@ -9,7 +9,7 @@ To find your data in the Arweave, click on a To Do list item and you will be pro
 ## Demo
 Since this website is hosted with github pages (which enforces https), the Arweave javascript module cannot perform POST requests to the arweave node. As a demo to show that the website does indeed write to the arweave, please take a look at the video below demonstrating this.
 
-https://youtu.be/yl3zTmx7tdo
+https://www.youtube.com/watch?v=_FWFqOROnTg
 
 ## Arweave
 Refer to https://www.arweave.org/ for more information
