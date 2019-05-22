@@ -6,8 +6,9 @@ To enable backing up on the Arweave, navigate to settings and choose your Arweav
 
 To find your data in the Arweave, click on a To Do list item and you will be prompted with the transaction ID of the item. Follow the guide at https://docs.arweave.org/developers/server/http-api to use this to find the transaction. 
 
-##Demo
+## Demo
 Since this website is hosted with github pages (which enforces https), the Arweave javascript module cannot perform POST requests to the arweave node. As a demo to show that the website does indeed write to the arweave, please take a look at the video below demonstrating this.
+
 https://youtu.be/yl3zTmx7tdo
 
 ## Arweave
