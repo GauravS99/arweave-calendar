@@ -28,7 +28,7 @@
 .settingsContainer{
   composes: appearer from global;
   position: absolute;
-  height: 40%;
+  height: 60%;
   width: 60%;
   left: 20%;
   top: 20%;
@@ -57,7 +57,7 @@ flex: 1;
 }
 
 .settingsList{
-  margin-top: 3vh;  
+  margin-top: 3vh;
 }
 
 .setting{
@@ -88,5 +88,3 @@ flex: 1;
   margin-top: 2vh;
 
 }
-
-

@@ -5,12 +5,11 @@ import reset from '../styles/reset.css';
 import {Timer} from './Timer';
 import {Calendar} from './Calendar';
 import {Heading, SettingsContainer} from './Heading';
-
-
+const Arweave = require('arweave/web');
 
 function checkCookie(){
     var cookieEnabled = navigator.cookieEnabled;
-    if (!cookieEnabled){ 
+    if (!cookieEnabled){
         document.cookie = "testcookie";
         cookieEnabled = document.cookie.indexOf("testcookie")!=-1;
     }
@@ -18,18 +17,22 @@ function checkCookie(){
 }
 
 export class App extends React.Component{
-	
+
 	constructor(props){
 		super(props);
-		
-		let defaultSettings ={militaryTime: false, 
+
+    this.arweave = Arweave.default.init({
+      host: '159.65.213.43',
+      port: 1984
+    });
+
+		let defaultSettings ={militaryTime: false,
 				showCompleted: true,
 				background: ""};
 
-
 		//starting date is the current date
-		this.state = { 
-			selectedDate: new Date(), 
+		this.state = {
+			selectedDate: new Date(),
 			items: {},
 			openSettings: false,
 			settings: defaultSettings,
@@ -44,7 +47,7 @@ export class App extends React.Component{
 		this.saveSettings = this.saveSettings.bind(this);
 		this.editItem = this.editItem.bind(this);
 		this.handleDayClick = this.handleDayClick.bind(this);
-	}	
+	}
 
 	//returns the key for the selected date's list of items
 	getKey(){
@@ -54,7 +57,7 @@ export class App extends React.Component{
 	componentDidMount(){
 
 		let cookiesAllowed = checkCookie();
-		
+
 		if (!cookiesAllowed){
 			alert("As of right now, this website requires third party cookies " +
 			"to save user events and user settings. Please enable them to get the full experience. Click OK to continue to the site");
@@ -94,12 +97,35 @@ export class App extends React.Component{
 		}
 	}
 
-	addItem(item){
-		let key = this.getKey();;
-		
-		if(this.storageType === "local"){
-			let data = localStorage.getItem(key);
+	async addItem(item){
+		let key = this.getKey();
+    let transactionID = "";
 
+		if(this.storageType === "local"){
+
+      let jwk = localStorage.getItem("arweave-calendar-keyfile");
+      if(jwk){
+        jwk = JSON.parse(jwk);
+        try{
+          let arweave = this.arweave;
+          //let key = await arweave.wallets.generate();
+          let transaction = await arweave.createTransaction({
+              data: JSON.stringify(item),
+              quantity: '0',
+          }, jwk);
+          await arweave.transactions.sign(transaction, jwk);
+          let arStatus = await arweave.transactions.post(transaction);
+          if(arStatus.status == 200){
+            transactionID = transaction.id;
+          }
+        }
+        catch(err){
+          console.error("Upload to Arweave was unsuccessful:" + err.message);
+        }
+      }
+
+      item["arweave_transaction_id"] = transactionID;
+			let data = localStorage.getItem(key);
 			if(data === null){
 				localStorage.setItem(key, JSON.stringify(
 					[item]
@@ -116,14 +142,14 @@ export class App extends React.Component{
 			if(this.state.items[key] === undefined){
 				let temp = Object.assign({}, this.state.items);
 				temp[key] = [item];
-				this.setState({items: temp}); 
+				this.setState({items: temp});
 			}
 			else{
 				let temp = Object.assign({}, this.state.items);
 				temp[key].push(item);
-				this.setState({items: temp}); 
+				this.setState({items: temp});
 			}
-		}	
+		}
 	}
 
 	handleDayClick(timestamp){
@@ -145,7 +171,7 @@ export class App extends React.Component{
 		}
 
 		//a box has been checked
-		if (type === "checkbox"){		
+		if (type === "checkbox"){
 			let entry = data.find(function(element) {
 				 return element.addTime === id;
 			});
@@ -185,26 +211,26 @@ export class App extends React.Component{
 			<BackgroundImg
 			settings = {this.state.settings}
 			/>
-			{this.state.openSettings && <SettingsContainer 
+			{this.state.openSettings && <SettingsContainer
 				saveSettings= {this.saveSettings}
 				settings = {this.state.settings}
 				/>}
-			
+
 				<div className = {this.state.openSettings?(styles.contentBlurred):styles.content}>
 					<Heading handleSettingsClick= {this.handleSettingsClick}/>
 					<div id="Grid" className = {styles.gridContainer}>
 						<div className = {styles.calendar}>
 							<Calendar
 							onDayClick = {this.handleDayClick}
-							storageType = {this.storageType} 
+							storageType = {this.storageType}
 							selectedDate = {this.state.selectedDate}
 							items={this.state.items}
 							keyHeader={this.keyHeader}
 							/>
 						</div>
 						<div className = {styles.todo}>
-							<Todo date={this.state.selectedDate} 
-							storageType = {this.storageType} 
+							<Todo date={this.state.selectedDate}
+							storageType = {this.storageType}
 							items={items}
 							addItem = {this.addItem}
 							editItem = {this.editItem}
@@ -227,7 +253,7 @@ export class App extends React.Component{
 
 
 class BackgroundImg extends React.Component{
-	
+
 	constructor(props){
 		super(props);
 		this.state = {imageError: false}
@@ -262,8 +288,8 @@ class BackgroundImg extends React.Component{
 		}
 
 		return (
-			<img 
-			className = {styles.backgroundImage} 
+			<img
+			className = {styles.backgroundImage}
 			src={source}
 			alt="background img"
 			onError={error}

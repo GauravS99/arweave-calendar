@@ -34,20 +34,20 @@ padding-right: 0.2em;
 
 .app-styles-todo__todo--9k_SV{
 	position: relative;
-	
+
 }
 
 .app-styles-todo__headingContainer--3AAGp{;
 	height: 10%;
 	position: relative;
 	border-bottom: 1px solid black;
-	
+
 	padding-left: 0.2em
 
 }
 
 .app-styles-todo__headingDiv--1V_1T{
-	
+
 }
 
 .app-styles-todo__headingFilterDiv--1LvNr{
@@ -90,20 +90,20 @@ padding-right: 0.2em;
 	position: relative;
 	max-height: 80%;
 	height: 80%;
-	
+
 }
 
 .app-styles-todo__inputContainer--3g3MA{;
   height: 12.5%;
-  
+
   border-top: 1px solid black;
 }
 
 .app-styles-todo__textInputItem--3-UYD{
 	height: 100%;
 	padding-top: 0.2em;
-	padding-bottom: 0.2em; 
-	
+	padding-bottom: 0.2em;
+
 	flex: 1;
 	flex-shrink: 2;
 }
@@ -112,7 +112,7 @@ padding-right: 0.2em;
  	font-size: 90%;
  	color: grey;
 	resize: none;
-	
+
 	border:0;
 }
 
@@ -125,7 +125,7 @@ padding-right: 0.2em;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 	max-width: 100%;
-	
+
 }
 
 .app-styles-todo__prioritySelectorContainer--2t3u_{
@@ -153,8 +153,8 @@ flex: 1;
 	border-top: none;
 	border-right: none;
 	border-bottom: none;
-	border-left: 1px solid grey; 
-	height: 100%; 
+	border-left: 1px solid grey;
+	height: 100%;
 	flex: 1;
 }
 
@@ -171,17 +171,17 @@ flex: 1;
 	padding: 0.3em;
 	width: 100%;
 	min-height: 50px;
-	
+
 
 }
 .app-styles-todo__checkBox--dyTCU{
 	color:#19a974;
     align-items: center;
-	fill: currentcolor; 
+	fill: currentcolor;
     width: 1.5rem;
     height: 1.5rem;
     padding:0.25rem;
-    
+
     border-style: solid;
     border-width: 1px;
     /*text-decoration:none; <!-- variable that toggles between none and strikethrough-->*/
@@ -210,6 +210,11 @@ flex: 1;
 	margin-right: 5px;
 }
 
+
+.app-styles-todo__itemText--30ZzK:hover{
+	font-weight: bold;
+}
+
 .app-styles-todo__itemText--30ZzK{
 	flex: 1;
 	margin-left: 0.5em;
@@ -229,7 +234,7 @@ flex: 1;
 .app-styles-todo__iconDiv--1BFrX{
 	height: 100%;
 	width: 4vh;
-	border-right: 1px solid black; 
+	border-right: 1px solid black;
 }
 
 .app-styles-todo__repeatIcon--3T3BQ{
@@ -257,8 +262,6 @@ flex: 1;
 	margin-left: 5px;
 	margin-right: 5px;
 }
-
-
 
 
 @media only screen and (min-width: 768px){
@@ -580,7 +583,7 @@ text-align: center;
 
 .app-styles-heading__settingsContainer--1DuBC{
   position: absolute;
-  height: 40%;
+  height: 60%;
   width: 60%;
   left: 20%;
   top: 20%;
@@ -607,7 +610,7 @@ flex: 1;
 }
 
 .app-styles-heading__settingsList--33nbr{
-  margin-top: 3vh;  
+  margin-top: 3vh;
 }
 
 .app-styles-heading__setting--1DLfj{
@@ -636,6 +639,4 @@ flex: 1;
   margin-top: 2vh;
 
 }
-
-
 

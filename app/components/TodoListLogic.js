@@ -1,6 +1,6 @@
 import React from 'react';
 import {TodoList, Input,
- TodoOptionsHeading, DateSelector, 
+ TodoOptionsHeading, DateSelector,
  TextInput, Dropdown, ExtraSettings} from './TodoListPresentation';
 
 export class TodoInputContainer extends React.Component{
@@ -46,13 +46,13 @@ export class TodoInputContainer extends React.Component{
 			case 2:
 				return "! !"
 			case 3:
-				return "! ! !"	
+				return "! ! !"
 		}
 	}
 
 	addItem(){
 		if(this.state.text.trim() !== ""){
-			
+
 			let time = null;
 			if(this.state.hour !== ""){
 				time = parseInt(this.state.minute);
@@ -69,8 +69,8 @@ export class TodoInputContainer extends React.Component{
 
 				time += numHours * 60;
 			}
-			
-			this.props.onAddItem({priority: this.state.priority, 
+
+			this.props.onAddItem({priority: this.state.priority,
 				text: this.state.text, time: time, addTime: (new Date()).getTime(),
 				 completed: false});
 
@@ -87,14 +87,14 @@ export class TodoInputContainer extends React.Component{
 			onRepeatClick={this.props.onRepeatClick}
 			>
 			<TextInput
-			onChange={this.handleTextChange} 
+			onChange={this.handleTextChange}
 			value = {this.state.text}
   			/>
-			<DateSelectorContainer 
+			<DateSelectorContainer
 			hour={this.state.hour}
 			minute={this.state.minute}
 			am={this.state.am}
-			onStateChange= {this.handleStateChange} 
+			onStateChange= {this.handleStateChange}
 			onTypeButtonClick = {this.handleTypeButtonClick}
 			militaryTime={this.props.militaryTime}
 			/>
@@ -110,7 +110,7 @@ class DateSelectorContainer extends React.Component{
 	constructor(props){
 		super(props);
 		this.digitCheck = new RegExp('^\\d+$');
-		
+
 		this.hourChange = this.hourChange.bind(this);
 		this.minuteChange = this.minuteChange.bind(this);
 		this.hourBlur = this.hourBlur.bind(this);
@@ -121,7 +121,7 @@ class DateSelectorContainer extends React.Component{
 		let current = event.target.value;
 		let value = parseInt(current);
 		if (!current.match(this.digitCheck)){
-			current = current.replace(/\D/g,''); 
+			current = current.replace(/\D/g,'');
 		}
 		else if (value > 23){
 			current = current.substring(0, current.length - 1); //added character is invalid so delete
@@ -139,13 +139,13 @@ class DateSelectorContainer extends React.Component{
 		}
 
 		this.props.onStateChange(toAdd);
-		
+
 	}
 
 	minuteChange(event){
 		let current = event.target.value;
 		if(!current.match(this.digitCheck)){
-			current = current.replace(/\D/g,''); 
+			current = current.replace(/\D/g,'');
 		}
 		else if (parseInt(current) > 59){
 			current = current.substring(0, current.length - 1); //added character is invalid so delete
@@ -163,7 +163,7 @@ class DateSelectorContainer extends React.Component{
 
 	minuteBlur(){
 		let current = this.props.minute;
-		if(current.length === 1){ //adds a 0 at the end for shorthand one digit time 
+		if(current.length === 1){ //adds a 0 at the end for shorthand one digit time
 			current += "0";
 		}
 
@@ -198,12 +198,12 @@ class DateSelectorContainer extends React.Component{
 }
 
 export class TodoOptionsHeadingContainer extends React.Component{
-	
+
 	constructor(props){
 		super(props);
 		this.items = ["entry time", "soonest", "priority"];
 		this.state = {dropdown: false};
-		
+
 		this.handleItemClick = this.handleItemClick.bind(this);
 		this.handleDropdownClick = this.handleDropdownClick.bind(this);
 	}
@@ -224,11 +224,11 @@ export class TodoOptionsHeadingContainer extends React.Component{
 
 	render(){
 		return (<TodoOptionsHeading>
-				<Dropdown 
-				type={"heading"} 
+				<Dropdown
+				type={"heading"}
 				dropdown = {this.state.dropdown}
 				selection= {this.props.order}
-				items={this.items} 
+				items={this.items}
 				onItemClick={this.handleItemClick}
 				onDropdownClick={this.handleDropdownClick}
 				/>
@@ -248,4 +248,3 @@ export class ExtraSettingContainer extends React.Component{
 	}
 
 }
-

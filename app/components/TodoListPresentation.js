@@ -3,7 +3,7 @@ import styles from '../styles/todo.css';
 
 
 export class Dropdown extends React.Component{
-	
+
 	constructor(props){
 		super(props);
 		this.handleSelection = this.handleSelection.bind(this);
@@ -15,7 +15,7 @@ export class Dropdown extends React.Component{
 
 	createList(){
 		let contentStyle;
-		
+
 		if(this.props.type === 'heading'){
 			contentStyle = styles.heading;
 		}
@@ -45,7 +45,7 @@ export class Dropdown extends React.Component{
 			<div onClick={this.props.onDropdownClick} className={buttonStyle}>
 				{this.props.selection}
 			</div>
-			{this.props.dropdown && 
+			{this.props.dropdown &&
 			<div className={styles.dropdownContent}>
 				{this.createList()}
 			</div>
@@ -56,16 +56,16 @@ export class Dropdown extends React.Component{
 
 
 export class TodoDateHeading extends React.Component{
-	
+
 	formatDate(){
 		const d = this.props.date;
 		const options = {year: 'numeric', month: 'long', day: 'numeric' };
 		let dateString = d.toLocaleDateString("en-US", options);
 		dateString = dateString.toLowerCase().substring(0,dateString.indexOf(","));
-		
 
-		let lastNum = parseInt(dateString.substring(dateString.length - 2, dateString.length).trim()); 
-		
+
+		let lastNum = parseInt(dateString.substring(dateString.length - 2, dateString.length).trim());
+
 		if(lastNum > 10 && lastNum < 20){
 			return dateString += "th";
 		}
@@ -75,7 +75,7 @@ export class TodoDateHeading extends React.Component{
 					return dateString += "st";
 				case 2:
 					return dateString += "nd";
-				case 3: 
+				case 3:
 					return dateString += "rd";
 				default:
 					return dateString += "th";
@@ -100,7 +100,7 @@ export class TodoDateHeading extends React.Component{
 }
 
 export class TodoOptionsHeading extends React.Component{
-	
+
 	render(){
 	return (
 			<div className={styles.headingContainer}>
@@ -116,7 +116,7 @@ export class TodoOptionsHeading extends React.Component{
 }
 
 export class TodoList extends React.Component{
-	
+
 
 	constructor(props){
 		super(props);
@@ -124,7 +124,7 @@ export class TodoList extends React.Component{
 	}
 
 
-	createListItem(item, i){ 
+	createListItem(item, i){
 	 return (
 			<li key={"li_" + i}>
 				<TodoItem
@@ -153,7 +153,7 @@ export class TodoList extends React.Component{
 }
 
 export class Input extends React.Component{
-	 
+
 render(){
 	return (
 		<div className= {styles.inputContainer}>
@@ -169,7 +169,7 @@ render(){
 				</div>
 
 				<div className={styles.iconDiv} onClick= {this.props.onRepeatClick}>
-					<img className = {styles.repeatIcon} 
+					<img className = {styles.repeatIcon}
 					src={require("../../images/repeat.svg")} alt="repeat icon"/>
 				</div>
 				<div>
@@ -177,18 +177,18 @@ render(){
 				</div>
 		</div>
 		);
-	}	
+	}
 }
 
 export const TextInput = (props) => {
 
 	return (
 			<div className={styles.textInputItem}>
-				<textarea 
+				<textarea
 				placeholder="What do you want to do?"
-				className={styles.textInput}  
-				type="text" 
-				onChange={props.onChange} 
+				className={styles.textInput}
+				type="text"
+				onChange={props.onChange}
 				value={props.value}
 				/>
 			</div>
@@ -203,17 +203,17 @@ export class DateSelector extends React.Component{
 			return (
 			<div className={styles.dateSelectorInputContainer}>
 					<input className={styles.dateSelectorInput}
-					 onChange={this.props.onChangeHour} 
+					 onChange={this.props.onChangeHour}
 					 value={this.props.hour}
-					 type="text" 
+					 type="text"
 					 maxLength="2"
 					 onBlur={this.props.onHourBlur}
 					 />
 					<span className={styles.mainFont}>:</span>
 					<input className={styles.dateSelectorInput}
-					 onChange={this.props.onChangeMinute} 
+					 onChange={this.props.onChangeMinute}
 					 value={this.props.minute}
-					 type="text" 
+					 type="text"
 					 maxLength="2"
 					 onBlur={this.props.onMinuteBlur}
 					 />
@@ -237,8 +237,9 @@ export class TodoItem extends React.Component{
 		this.state = {hovered: false}
 		this.toggleHover = this.toggleHover.bind(this);
 		this.onInteraction = this.onInteraction.bind(this);
+		this.onContainerClick = this.onContainerClick.bind(this);
 	}
-	
+
 
 	formatTime(){
 		if(this.props.item.time != null){
@@ -282,6 +283,10 @@ export class TodoItem extends React.Component{
 		this.props.editItem(e.currentTarget.id, this.props.item.addTime);
 	}
 
+	onContainerClick(){
+		this.props.item.arweave_transaction_id && prompt("The Arweave Transaction ID for this item is:", this.props.item.arweave_transaction_id);
+	}
+
 	render(){
 
 		let color;
@@ -313,11 +318,11 @@ export class TodoItem extends React.Component{
 				 onMouseLeave={this.toggleHover}
 				 onClick={this.onInteraction}
 
-				 > 
+				 >
                  {(this.state.hover || this.props.item.completed) &&
                  <path className={styles.fadeIn} d="M12,25.23,3.23,16.35l3.09-3.09L12,18.89,21.49,7.14l3.62,3.12L12,25.23Z"></path>}
                 </svg>
-                <div className={this.props.item.completed?styles.itemTextCompleted:styles.itemText}>
+                <div className={this.props.item.completed?styles.itemTextCompleted:styles.itemText} onClick={this.onContainerClick}>
                 	{this.props.item.text}
                 </div>
                 <div className={styles.itemTime}>
@@ -338,15 +343,15 @@ export const ExtraSettings = (props) =>{
 			<div className={styles.extraSettingsContainer}>
 				<div>
 					<div className="inlineBlock">
-						Repeat every
+
 					</div>
 					<input className={styles.numberSelector} type="number" min="0" max="8"/>
 					<div className="inlineBlock">
-						weeks
+
 					</div>
 				</div>
 				<div style={{color: "red"}}>
-				unfinished
+					Currently Unfinished
 				</div>
 			</div>
 		</div>
@@ -354,5 +359,3 @@ export const ExtraSettings = (props) =>{
 
 
 }
-
-

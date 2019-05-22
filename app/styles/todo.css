@@ -35,7 +35,7 @@ padding-right: 0.2em;
 .todo{
 	composes: fill;
 	position: relative;
-	
+
 }
 
 .headingContainer{
@@ -43,13 +43,13 @@ padding-right: 0.2em;
 	height: 10%;
 	position: relative;
 	border-bottom: 1px solid black;
-	
+
 	padding-left: 0.2em
 
 }
 
 .headingDiv{
-	
+
 }
 
 .headingFilterDiv{
@@ -98,21 +98,21 @@ padding-right: 0.2em;
 	position: relative;
 	max-height: 80%;
 	height: 80%;
-	
+
 }
 
 .inputContainer{
   composes: flexBox from global;;
   height: 12.5%;
-  
+
   border-top: 1px solid black;
 }
 
 .textInputItem{
 	height: 100%;
 	padding-top: 0.2em;
-	padding-bottom: 0.2em; 
-	
+	padding-bottom: 0.2em;
+
 	flex: 1;
 	flex-shrink: 2;
 }
@@ -123,7 +123,7 @@ padding-right: 0.2em;
  	font-size: 90%;
  	color: grey;
 	resize: none;
-	
+
 	border:0;
 }
 
@@ -137,7 +137,7 @@ padding-right: 0.2em;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 	max-width: 100%;
-	
+
 }
 
 .prioritySelectorContainer{
@@ -168,8 +168,8 @@ flex: 1;
 	border-top: none;
 	border-right: none;
 	border-bottom: none;
-	border-left: 1px solid grey; 
-	height: 100%; 
+	border-left: 1px solid grey;
+	height: 100%;
 	flex: 1;
 }
 
@@ -190,17 +190,17 @@ flex: 1;
 	padding: 0.3em;
 	width: 100%;
 	min-height: 50px;
-	
+
 
 }
 .checkBox{
 	color:#19a974;
     align-items: center;
-	fill: currentcolor; 
+	fill: currentcolor;
     width: 1.5rem;
     height: 1.5rem;
     padding:0.25rem;
-    
+
     border-style: solid;
     border-width: 1px;
     /*text-decoration:none; <!-- variable that toggles between none and strikethrough-->*/
@@ -230,6 +230,11 @@ flex: 1;
 	margin-right: 5px;
 }
 
+
+.itemText:hover{
+	font-weight: bold;
+}
+
 .itemText{
 	flex: 1;
 	margin-left: 0.5em;
@@ -250,7 +255,7 @@ flex: 1;
 .iconDiv{
 	height: 100%;
 	width: 4vh;
-	border-right: 1px solid black; 
+	border-right: 1px solid black;
 }
 
 .repeatIcon{
@@ -280,5 +285,3 @@ flex: 1;
 	margin-left: 5px;
 	margin-right: 5px;
 }
-
-
